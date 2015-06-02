@@ -1,0 +1,51 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+<componente-1></componente-1>
+
+@element componente-1
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://Mortega5.github.io/componente-1
+-->
+<polymer-element name="componente-2" attributes="author fancy">
+  <template>
+    <button on-click="{{addListener}}">Añadir binding</button>
+    <div id="contenedor" style="width: 100px; height:100px;background-color: red">
+    </div>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      
+      /* Comienzo a escuchar el tipo string */
+      attached: function() {
+        console.log('ready');
+        this.addEventListener('string', this.reactionDataType);
+      },
+
+      /* Funcon a ejecutar cuando sale algun string*/
+      reactionDataType: function(e) {
+        console.log(e.detail.who," esta buscando: ", e.detail.type);
+        console.log(this)
+      },
+
+      addListener: function(e,d,s) {
+        console.log('llego: ',e,d,s)
+        //('componente-1_input', this.actionType)
+      },
+      actionType: function(e,d,s) {
+        console.log('recibe datos');
+        var cadena = document.createElement('p');
+        p.innerHTML = d.string;
+        this.$.contenedor.append(p);
+      },
+
+
+    });
+  </script>
+</polymer-element>

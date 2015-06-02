@@ -1,0 +1,43 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+<componente-1></componente-1>
+
+@element componente-1
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://Mortega5.github.io/componente-1
+-->
+<polymer-element name="componente-1" attributes="author fancy">
+  <template>
+    <link rel="stylesheet" href="componente-1.css">
+    <input id="entrada" type="text"></input>
+  <button on-click="{{send}}">Button</button>
+  <button on-click="{{searchBind}}">Buscar</button>
+  <content></content>
+  </template>
+<script>
+  Polymer({
+    ready: function() {
+
+    },
+
+    send : function(e,d,s){
+      var event = new CustomEvent('componente-1_input',{'detail': {string:this.$.entrada.value}})
+      document.querySelector('body').dispatchEvent(event);
+      console.log('se creo', event)
+    },
+    
+    searchBind: function(e,d,s) {
+      console.log("disparo evento search");
+      var object = {who:this,type:'string'};
+      var event = new CustomEvent('string', {'detail': object}); 
+      document.querySelector('body').dispatchEvent(event);
+    }
+  });
+</script>
+</polymer-element>
